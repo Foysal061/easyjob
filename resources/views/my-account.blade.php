@@ -44,7 +44,7 @@
 					<p class="form-row form-row-wide">
 						<label for="username">Username:
 							<i class="ln ln-icon-Male"></i>
-							<input type="text" class="input-text" name="username" id="username" value="" />
+							<input type="text" class="input-text" name="username" id="username" value="" / >
 						</label>
 					</p>
 
@@ -74,9 +74,19 @@
 
 				<form method="POST" class="register" >
 					@csrf
+						@if(isset($messege))
+							<div class="alert">
+                            	{{ $messege }}
+                        	</div>
+                        @elseif(isset($errorpassword))
+							<div class="alert">
+                            	{{ $errorpassword }}
+                        	</div>
+                    	@endif
 				<p class="form-row form-row-wide">
 					<label for="username2">Username:
 						<i class="ln ln-icon-Male"></i>
+						
 						<input type="text" class="input-text" name="username2" id="username2" value="" />
 					</label>
 				</p>
@@ -111,5 +121,15 @@
 		</div>
 	</div>
 </div>
+
+<style type="text/css">
+	
+.alert {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+}
+
+</style>
 
 @endsection

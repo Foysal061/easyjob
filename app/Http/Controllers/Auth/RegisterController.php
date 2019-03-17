@@ -89,13 +89,39 @@ class RegisterController extends Controller
             'email2' => 'required|email',
             'password1' => 'required'
         ]);
+        $username = $request->input('username2');
+        $email = $request->input('email2');
+
+        //dd($email);
+
+        $emailifexist=User::where('email',$email)->first();
+
+        if(isset($emailifexist))
+        {
+            $messege="Email address already exist. Please try with another email address.";
+            return view('my-account',compact('messege'));
+        }
+        $password = $request->input('password1');
+
+        $repeatpassword = $request->input('password2');
+
+        if($password != $repeatpassword)
+        {
+            $errorpassword="Password dosen't match.";
+            return view('my-account',compact('errorpassword'));
+        }
+
+        
       
         $user = User::create([
-            'name'=> $request->input('username2'),
-            'email'=> $request->input('email2'),
-            'password'=> bcrypt($request->input('password1'))
+            'name'=> $username,
+            'email'=> $email,
+            'password'=> bcrypt($password)
 
         ]);
+
+        
+        
 
         auth()->login($user);
        // $user->save();
