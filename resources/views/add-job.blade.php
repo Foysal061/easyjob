@@ -25,9 +25,15 @@
 		<div class="submit-page">
 
 			<!-- Notice -->
+			@if( !auth()->check() )
 			<div class="notification notice closeable margin-bottom-40">
-				<p><span>Have an account?</span> If you don’t have an account you can create one below by entering your email address. A password will be automatically emailed to you.</p>
+				<p>
+					You must have an account to add a job.<br>
+					If you have an account please <a href="/my-account"><span>Login</span></a><br>
+					If you don't have an account please <a href="/my-account#tab2"><span>Sign up</span></a><br>
+				</p>
 			</div>
+			@endif
 
 
 			<!-- Email -->

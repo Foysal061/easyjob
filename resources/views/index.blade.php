@@ -78,7 +78,7 @@
 		<div class="listings-container">
 			
 			<!-- Listing -->
-			<a href="job-page.html" class="listing full-time">
+			<a href="job-page" class="listing full-time">
 				<div class="listing-logo">
 					<img src="images/job-list-logo-01.png" alt="">
 				</div>
